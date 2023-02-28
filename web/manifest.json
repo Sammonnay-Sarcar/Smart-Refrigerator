@@ -1,6 +1,6 @@
 {
-    "name": "smart_refrigerator",
-    "short_name": "smart_refrigerator",
+    "name": "cold_storage",
+    "short_name": "cold_storage",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,19 +1,28 @@
-import "package:flutter_neumorphic/flutter_neumorphic.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return NeumorphicApp(
-      debugShowCheckedModeBanner: false,
       title: 'Neumorphic App',
+      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       theme: NeumorphicThemeData(
-        baseColor: Colors.black,
+        baseColor: Color(0xFFE0E5EC),
+        accentColor: Color(0xFF9BA7B7),
         lightSource: LightSource.topLeft,
         depth: 10,
+      ),
+      darkTheme: NeumorphicThemeData(
+        baseColor: Color(0xFF17181A),
+        accentColor: Color(0xFF2E3035),
+        lightSource: LightSource.topLeft,
+        depth: 6,
       ),
       home: MyHomePage(),
     );
@@ -25,15 +34,40 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NeumorphicAppBar(
-        title: NeumorphicText(
-          'Hello World',
+        title: Text('Neumorphic App'),
+        centerTitle: true,
+        actions: [
+          NeumorphicButton(
+            child: Icon(Icons.settings),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: Center(
+        child: Neumorphic(
           style: NeumorphicStyle(
-            depth: 4,
-            color: Colors.white,
+            shape: NeumorphicShape.concave,
+            depth: 6,
+            intensity: 0.7,
+            color: Colors.grey[200],
+            lightSource: LightSource.topLeft,
+          ),
+          child: Container(
+            width: 200,
+            height: 200,
+            child: Center(
+              child: Text(
+                'Hello World!',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[800],
+                ),
+              ),
+            ),
           ),
         ),
       ),
-      body: NeumorphicText("Test Data"),
     );
   }
 }
