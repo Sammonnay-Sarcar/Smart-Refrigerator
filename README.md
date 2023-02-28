@@ -1,4 +1,4 @@
-# smart_refrigerator
+# cold_storage
 
 A new Flutter project.
 
