@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.smart_refrigerator">
+    package="com.example.cold_storage">
    <application
-        android:label="smart_refrigerator"
+        android:label="cold_storage"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
