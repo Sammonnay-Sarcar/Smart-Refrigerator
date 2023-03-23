@@ -1,5 +1,3 @@
-import 'package:cold_storage/features/Content/screen/content_screen.dart';
-import 'package:cold_storage/features/Location/screen/location_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
