@@ -1,16 +1,20 @@
-
+import 'package:cold_storage/bottomNavigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:smart_refrigerator/bottomNavigationBar.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return NeumorphicApp(
+    return const NeumorphicApp(
       title: 'Neumorphic App',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,

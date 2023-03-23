@@ -1,12 +1,13 @@
+import 'package:cold_storage/features/Content/screen/content_screen.dart';
+import 'package:cold_storage/features/Location/screen/location_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:smart_refrigerator/features/Content/screen/content_screen.dart';
-import 'package:smart_refrigerator/features/Home%20Screen/screen/home_screen.dart';
-import 'package:smart_refrigerator/features/Location/screen/location_screen.dart';
+
+import 'features/Home Screen/screen/home_screen.dart';
 
 class RoundedBottomNavigationBar extends StatefulWidget {
   const RoundedBottomNavigationBar({super.key});
