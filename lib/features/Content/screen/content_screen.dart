@@ -12,10 +12,8 @@ class ContentScreen extends StatefulWidget {
 class _ContentScreenState extends State<ContentScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Content Screen"),
-      ),
+    return const Center(
+      child: Text("Content Screen"),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:cold_storage/bottomNavigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:smart_refrigerator/bottomNavigationBar.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,6 +32,49 @@ class _MyAppState extends State<MyApp> {
         depth: 6,
       ),
       home: RoundedBottomNavigationBar(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: NeumorphicAppBar(
+        title: Text('Neumorphic App'),
+        centerTitle: true,
+        actions: [
+          NeumorphicButton(
+            child: Icon(Icons.settings),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: Center(
+        child: Neumorphic(
+          style: NeumorphicStyle(
+            shape: NeumorphicShape.concave,
+            depth: 6,
+            intensity: 0.7,
+            color: Colors.grey[200],
+            lightSource: LightSource.topLeft,
+          ),
+          child: Container(
+            width: 200,
+            height: 200,
+            child: Center(
+              child: Text(
+                'Hello World!',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[800],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
