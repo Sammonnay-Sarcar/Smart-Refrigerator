@@ -25,7 +25,17 @@ class _RoundedBottomNavigationBarState
     const LocationScreen(),
     const ContentScreen()
   ];
+  final pressedDepth = -10.00;
+  final unPressedDepth = 10.00;
   void _selectedPage(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  void _onItemTapped(index) {
+    print("hello world");
+    print(index);
     setState(() {
       _selectedIndex = index;
     });
@@ -85,40 +95,43 @@ class _RoundedBottomNavigationBarState
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 NeumorphicRadio(
-                  style: const NeumorphicRadioStyle(
+                  value: 2,
+                  onChanged: _onItemTapped,
+                  style: NeumorphicRadioStyle(
+                      selectedDepth: pressedDepth,
+                      unselectedDepth: unPressedDepth,
                       boxShape: NeumorphicBoxShape.circle()),
-                  child: IconButton(
-                      enableFeedback: false,
-                      onPressed: () {
-                        setState(() {
-                          _selectedIndex = 2;
-                        });
-                      },
-                      icon: const Icon(FeatherIcons.package)),
+                  child: Container(
+                      height: 60,
+                      width: 60,
+                      // color: Colors.blue,
+                      child: const Icon(FeatherIcons.package)),
                 ),
                 NeumorphicRadio(
-                  style: const NeumorphicRadioStyle(
+                  value: 0,
+                  onChanged: _onItemTapped,
+                  style: NeumorphicRadioStyle(
+                      selectedDepth: pressedDepth,
+                      unselectedDepth: unPressedDepth,
                       boxShape: NeumorphicBoxShape.circle()),
-                  child: IconButton(
-                      enableFeedback: false,
-                      onPressed: () {
-                        setState(() {
-                          _selectedIndex = 0;
-                        });
-                      },
-                      icon: const Icon(FeatherIcons.thermometer)),
+                  child: Container(
+                      height: 60,
+                      width: 60,
+                      // color: Colors.blue,
+                      child: const Icon(FeatherIcons.thermometer)),
                 ),
                 NeumorphicRadio(
-                  style: const NeumorphicRadioStyle(
+                  value: 1,
+                  onChanged: _onItemTapped,
+                  style: NeumorphicRadioStyle(
+                      selectedDepth: pressedDepth,
+                      unselectedDepth: unPressedDepth,
                       boxShape: NeumorphicBoxShape.circle()),
-                  child: IconButton(
-                      enableFeedback: false,
-                      onPressed: () {
-                        setState(() {
-                          _selectedIndex = 1;
-                        });
-                      },
-                      icon: const Icon(FeatherIcons.mapPin)),
+                  child: Container(
+                      height: 60,
+                      width: 60,
+                      // color: Colors.blue,
+                      child: const Icon(FeatherIcons.mapPin)),
                 ),
               ],
             ),
