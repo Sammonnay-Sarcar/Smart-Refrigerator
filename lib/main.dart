@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:cold_storage/bottomNavigationBar.dart';
 import 'package:cold_storage/features/LoginScreen/login_screen.dart';
+import 'package:cold_storage/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -15,7 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const NeumorphicApp(
+    return NeumorphicApp(
       title: 'Neumorphic App',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
@@ -31,6 +34,7 @@ class _MyAppState extends State<MyApp> {
         lightSource: LightSource.topLeft,
         depth: 6,
       ),
+      onGenerateRoute: (settings) => generateRoute(settings),
       home: loginScreen(),
     );
   }
