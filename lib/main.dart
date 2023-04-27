@@ -1,4 +1,5 @@
 import 'package:cold_storage/bottomNavigationBar.dart';
+import 'package:cold_storage/features/LoginScreen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -30,7 +31,7 @@ class _MyAppState extends State<MyApp> {
         lightSource: LightSource.topLeft,
         depth: 6,
       ),
-      home: RoundedBottomNavigationBar(),
+      home: loginScreen(),
     );
   }
 }
