@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:cold_storage/common/widgets/list_tile.dart';
+import 'package:cold_storage/features/Add%20Location/screen/Add_Location.dart';
+import 'package:cold_storage/features/Add%20Location/services/addLocationServices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -16,6 +18,11 @@ class ContentScreen extends StatefulWidget {
 
 class _ContentScreenState extends State<ContentScreen> {
   List<String> contentArray = ["Tomato", "potatoe", "kumro"];
+  final AddLocationServices addLocation = new AddLocationServices();
+  void add(BuildContext context) {
+    addLocation.addLocation(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,10 +49,15 @@ class _ContentScreenState extends State<ContentScreen> {
               children: [
                 Neumorphic(
                   style: NeumorphicStyle(boxShape: NeumorphicBoxShape.circle()),
-                  child: Container(
-                    height: 80,
-                    width: 80,
-                    child: Icon(FeatherIcons.edit),
+                  child: NeumorphicButton(
+                    style:
+                        NeumorphicStyle(boxShape: NeumorphicBoxShape.circle()),
+                    onPressed: () => {add(context)},
+                    child: Container(
+                      height: 60,
+                      width: 60,
+                      child: Icon(FeatherIcons.edit),
+                    ),
                   ),
                 )
               ],
