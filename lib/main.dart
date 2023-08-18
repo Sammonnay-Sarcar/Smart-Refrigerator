@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:cold_storage/bottomNavigationBar.dart';
-import 'package:cold_storage/features/LoginScreen/login_screen.dart';
+import 'package:cold_storage/login_screen.dart';
 import 'package:cold_storage/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';

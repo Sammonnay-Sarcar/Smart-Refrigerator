@@ -10,7 +10,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'features/Home Screen/screen/home_screen.dart';
 
 class RoundedBottomNavigationBar extends StatefulWidget {
-  static const String routeName = '/bottom-bar';
+  static const String routeName = '/home';
   const RoundedBottomNavigationBar({super.key});
 
   @override
