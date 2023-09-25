@@ -1,11 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:convert';
+import 'package:cold_storage/models/iotFeeds.dart';
 import 'package:cold_storage/common/widgets/list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:http/http.dart' as http;
+import '../../../constants/global_variables.dart';
 
 class LocationScreen extends StatefulWidget {
   const LocationScreen({super.key});
@@ -15,9 +19,53 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  List<String> locationArray = ["Tomato", "potatoe", "kumro"];
+  List<iotFeeds> iotdata = [];
+  dynamic random;
+  @override
+  void initState() async{
+    super.initState();
+    dynamic randomTest = await _loadItems();
+    setState(() {
+      random = randomTest;
+    });
+  }
+
+  Future<Map<String, dynamic>> _loadItems() async {
+      http.Response res =
+          await http.get(Uri.parse('$uri_test'), headers: <String, String>{
+        'Content-type': 'application/json; charset=utf-8',
+      });
+      print(jsonEncode(jsonDecode(res.body)));
+      // for (int i = 0; i <= 0; i++) {
+      //   iotdata.add(iotList.fromJson(jsonEncode(jsonDecode(res.body))));
+      dynamic randomTest = iotFeeds.fromJson(jsonEncode(jsonDecode(res.body))).feeds[1];
+      print(randomTest['field1']);
+      print(randomTest['field2']);
+      return randomTest;
+      // try {
+      //   random.forEach((key, value) {
+      //     print('$key \t $value');
+      //   });
+      // } catch (e) {
+      //   print("Naa hopaya");
+      // }
+
+      // }
+      // print(iotdata[0].id);
+   
+  }
+
+  List<String> locationArray = ["Tomato", "Potatoe", "Pumkin"];
   @override
   Widget build(BuildContext context) {
+    String temperature = random['field1'].toString();
+    print(temperature);
+    // String temperature = "30";
+    //iotdata[0].temperature.toString();
+    String humidity = random['field2'].toString();
+    print(humidity);
+    // String humidity = "10";
+    //iotdata[0].humidity.toString();
     return Column(
       children: [
         Padding(
@@ -100,8 +148,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                 height: 8,
                               ),
                               Text(
-                                "4.20 °C",
-                                style: TextStyle(fontSize: 30),
+                                "$temperature °C",
+                                style: TextStyle(fontSize: 28),
                               )
                             ],
                           ),
@@ -109,15 +157,15 @@ class _LocationScreenState extends State<LocationScreen> {
                           Column(
                             children: [
                               Text(
-                                "Optimal\nTemperature",
+                                "Current\nHumidity",
                                 textAlign: TextAlign.center,
                               ),
                               SizedBox(
                                 height: 8,
                               ),
                               Text(
-                                "4.20 °C",
-                                style: TextStyle(fontSize: 30),
+                                "$humidity %",
+                                style: TextStyle(fontSize: 28),
                               )
                             ],
                           )
