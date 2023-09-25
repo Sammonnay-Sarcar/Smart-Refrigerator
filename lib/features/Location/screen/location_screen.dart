@@ -22,11 +22,12 @@ class _LocationScreenState extends State<LocationScreen> {
   List<iotFeeds> iotdata = [];
   dynamic random;
   @override
-  void initState() async{
+  void initState() {
     super.initState();
-    dynamic randomTest = await _loadItems();
-    setState(() {
-      random = randomTest;
+    _loadItems().then((randomTest) {
+      setState(() {
+        random = randomTest;
+      });
     });
   }
 
