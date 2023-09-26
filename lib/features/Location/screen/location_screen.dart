@@ -19,54 +19,48 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  List<iotFeeds> iotdata = [];
   dynamic random;
+
   @override
   void initState() {
     super.initState();
     _loadItems().then((randomTest) {
       setState(() {
-        random = randomTest;
+        random = randomTest ??
+            {
+              'created_at': '2023-08-18T08:43:28Z',
+              'entry_id': 426,
+              'field1': 27,
+              'field2': 54,
+              'field3': 29,
+              'field4': 48
+            };
       });
     });
   }
 
   Future<Map<String, dynamic>> _loadItems() async {
-      http.Response res =
-          await http.get(Uri.parse('$uri_test'), headers: <String, String>{
-        'Content-type': 'application/json; charset=utf-8',
-      });
-      print(jsonEncode(jsonDecode(res.body)));
-      // for (int i = 0; i <= 0; i++) {
-      //   iotdata.add(iotList.fromJson(jsonEncode(jsonDecode(res.body))));
-      dynamic randomTest = iotFeeds.fromJson(jsonEncode(jsonDecode(res.body))).feeds[1];
-      print(randomTest['field1']);
-      print(randomTest['field2']);
-      return randomTest;
-      // try {
-      //   random.forEach((key, value) {
-      //     print('$key \t $value');
-      //   });
-      // } catch (e) {
-      //   print("Naa hopaya");
-      // }
-
-      // }
-      // print(iotdata[0].id);
-   
+    http.Response res =
+        await http.get(Uri.parse(uri_test), headers: <String, String>{
+      'Content-type': 'application/json; charset=utf-8',
+    });
+    // print(jsonEncode(jsonDecode(res.body)));
+    dynamic randomTest =
+        iotFeeds.fromJson(jsonEncode(jsonDecode(res.body))).feeds[1];
+    // print(randomTest['field1']);
+    // print(randomTest['field2']);
+    return randomTest;
   }
 
   List<String> locationArray = ["Tomato", "Potatoe", "Pumkin"];
+
   @override
   Widget build(BuildContext context) {
-    String temperature = random['field1'].toString();
-    print(temperature);
+    String temperature = random['field1']?.toString() ?? 'Def';
+    // print(temperature);
     // String temperature = "30";
-    //iotdata[0].temperature.toString();
-    String humidity = random['field2'].toString();
-    print(humidity);
-    // String humidity = "10";
-    //iotdata[0].humidity.toString();
+    String humidity = random['field2']?.toString() ?? '0';
+    // print(humidity);
     return Column(
       children: [
         Padding(
@@ -81,7 +75,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         "Tomato",
                         style: TextStyle(
@@ -95,7 +89,7 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         "Quantity",
                         style: TextStyle(fontSize: 15),
@@ -108,7 +102,7 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         "Arrival Date",
                         style: TextStyle(fontSize: 15),
@@ -121,7 +115,7 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         "Expiry Date",
                         style: TextStyle(fontSize: 15),
@@ -181,7 +175,7 @@ class _LocationScreenState extends State<LocationScreen> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Container(
+          child: SizedBox(
             height: 225,
             child: ListView.builder(
                 itemCount: locationArray.length,
@@ -197,7 +191,7 @@ class _LocationScreenState extends State<LocationScreen> {
             children: [
               Neumorphic(
                 style: NeumorphicStyle(boxShape: NeumorphicBoxShape.circle()),
-                child: Container(
+                child: SizedBox(
                   height: 80,
                   width: 80,
                   child: Icon(FeatherIcons.edit),
